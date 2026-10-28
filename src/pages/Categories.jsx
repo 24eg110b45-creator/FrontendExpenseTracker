@@ -66,7 +66,7 @@ export default function Categories() {
         action={<button className="button button-primary" onClick={() => setForm({ ...blank })}><Plus size={17} /> New category</button>} />
       {toast && <Toast message={toast} onClose={() => setToast('')} />}
       {error && <ErrorState message={error} onRetry={load} />}
-      {loading ? <Loading label="Loading categories…" /> : (
+      {loading ? <Loading label="Loading categories…" /> : !error && (
         <div className="category-groups">
           {[{ title: 'Expenses', description: 'Places your money goes', items: expenseCategories, kind: 'EXPENSE' },
             { title: 'Income', description: 'Places your money comes from', items: incomeCategories, kind: 'INCOME' }].map((group) => (

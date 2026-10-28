@@ -141,7 +141,7 @@ export default function Transactions() {
         </div>
       </section>
       {error && <ErrorState message={error} onRetry={load} />}
-      {loading ? <Loading label="Loading transactions…" /> : (
+      {loading ? <Loading label="Loading transactions…" /> : !error && (
         <section className="panel transactions-panel full-table-panel">
           <div className="panel-heading"><div><span className="eyebrow">{pageData?.totalElements || 0} RECORDS</span><h2>All transactions</h2></div>
             <label className="sort-picker"><span>Sort by</span><select aria-label="Sort transactions" value={`${filters.sortBy}:${filters.direction}`} onChange={(event) => { const [sortBy, direction] = event.target.value.split(':'); setFilters((current) => ({ ...current, sortBy, direction })) }}><option value="transactionDate:desc">Newest first</option><option value="transactionDate:asc">Oldest first</option><option value="amount:desc">Amount: high to low</option><option value="amount:asc">Amount: low to high</option></select><ArrowDown size={14} /></label>
